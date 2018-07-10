@@ -9,7 +9,7 @@ import fnmatch
 class ZMQConan(ConanFile):
     name = "zmq"
     version = "4.2.2"
-    url = "https://github.com/bincrafters/conan-zmq"
+    url = "https://github.com/zhanyigo/conan-zmq"
     description = "ZeroMQ is a community of projects focused on decentralized messaging and computing"
     license = "LGPL-3.0"
     exports = ["LICENSE.md"]
@@ -20,7 +20,7 @@ class ZMQConan(ConanFile):
     generators = ['cmake']
 
     def build_cmake(self):
-        cmake = CMake(self, generator='Ninja')
+        cmake = CMake(self)
         if self.settings.compiler != 'Visual Studio':
             cmake.definitions['CMAKE_POSITION_INDEPENDENT_CODE'] = self.options.fPIC
         cmake.definitions['ENABLE_CURVE'] = self.options.encryption is not None
